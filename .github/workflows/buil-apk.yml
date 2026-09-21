@@ -31,9 +31,9 @@ jobs:
         with:
           gradle-version: '8.11.1'
 
-      - name: Build APK
+           - name: Make WebView look like desktop Chrome
         run: |
-          gradle -p build-project assembleDebug
+          sed -i 's#Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 Chrome/131.0 Mobile Safari/537.36#Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36#' build-project/app/src/main/java/com/example/whatsappcompanion/MainActivity.java
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
